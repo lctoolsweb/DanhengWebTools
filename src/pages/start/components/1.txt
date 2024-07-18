@@ -1,0 +1,90 @@
+<template>
+  <a-table :columns="columns" :data-source="data" :row-key="'tid'"/>
+</template>
+
+<script>
+import { defineComponent, reactive, watch } from 'vue';
+import { Table, Message } from '@arco-design/web-vue';
+import axios from 'axios';
+
+export default defineComponent({
+  components: {
+    'a-table': Table,
+  },
+  props: {
+    selectedPlayer: Object,
+  },
+  setup(props) {
+    const backpackData = reactive({
+      materialList: [],
+      relicList: [],
+      equipmentList: [],
+    });
+
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          'http://61.136.162.144:9999/api/command',
+          {
+            uid: props.selectedPlayer.uid,
+            command: 'getbag',
+            adminpass: 'mhfude'
+          },
+          {
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            }
+          }
+        );
+        if (response.data.retcode === 0) {
+          Object.assign(backpackData, response.data.data);
+        } else {
+          message.error('获取背包数据失败');
+        }
+      } catch (error) {
+        message.error('获取背包数据失败');
+      }
+    };
+
+    watch(() => props.selectedPlayer, () => {
+      if (props.selectedPlayer) {
+        fetchData();
+      }
+    });
+
+    const columns = [
+      {
+        title: '类型',
+        dataIndex: 'type',
+        key: 'type',
+      },
+      {
+        title: '物品ID',
+        dataIndex: 'tid',
+        key: 'tid',
+      },
+      {
+        title: '数量',
+        dataIndex: 'num',
+        key: 'num',
+      },
+      {
+        title: '过期时间',
+        dataIndex: 'expireTime',
+        key: 'expireTime',
+      },
+    ];
+
+    const data = [
+      ...backpackData.materialList.map(item => ({ ...item, type: '材料' })),
+      ...backpackData.relicList.map(item => ({ ...item, type: '圣遗物' })),
+      ...backpackData.equipmentList.map(item => ({ ...item, type: '装备' })),
+    ];
+
+    return {
+      columns,
+      data,
+    };
+  },
+});
+</script>
