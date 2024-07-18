@@ -2,7 +2,7 @@
   <div>
     <div class="ct">
       <!-- 添加图片 -->
-      <img src="https://ooo.0x0.ooo/2024/06/02/OJH6MG.jpg" alt="Image" class="centered-image" />
+      <img src="https://ooo.0x0.ooo/2024/07/18/OR1UEB.png" alt="Image" class="centered-image" />
 
       <div class="title">
         {{ translatedText.title }}
@@ -101,7 +101,7 @@ const updateTranslatedText = () => {
 };
 
 // 获取最新版本号
-const currentVersion = '0.1.7'; 
+const currentVersion = '0.9.9'; 
 const latestVersion = ref('');  
 
 const fetchLatestVersion = async () => {

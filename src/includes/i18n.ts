@@ -51,9 +51,9 @@ const options: I18nOptions = {
       
       
       ct: {
-        title: "cxfmTools",
+        title: "～(∠・ω< )⌒☆Tools",
         introduce: "适用于DanhengServer的web命令生成器",
-        start: "开始",
+        start: "Ciallo～",
         languageSwitchSuccess:"语言切换成功"
       },
       commuse: {
@@ -70,9 +70,9 @@ const options: I18nOptions = {
     },
     en: {
       ct:{
-        title: "LunarCoreWebTools-EN",
-        introduce: "Web command generator for LunarCore",
-        start: "start",
+        title: "～(∠・ω< )⌒☆Tools-EN",
+        introduce: "Web command generator for DanhengServer",
+        start: "Ciallo～",
         languageSwitchSuccess:"The language switch is successful"
       },
       main:{
