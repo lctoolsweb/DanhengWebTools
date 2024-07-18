@@ -52,9 +52,13 @@ http-server
 # 远程命令
 请在`.env`文件中填入Dispatch服务地址与Adminkey，例如
 ```
-VITE_APP_API_BASE_URL=https://127.0.0.1
 VITE_DANHENG_DISPATCH_SERVER=http://127.0.0.1:443
 VITE_DANHENG_ADMIN_KEY=KFC-Crazy-Thursday-vme50
 ```
 Adminkey可以在服务器配置文件(config.json)中得到
-
+# Ciallo～(∠・ω )⌒☆
+点击特效与音效可以在` .env`文件中开启/关闭
+```
+VITE_CLICK_AUDIO=true
+VITE_CLICK_TEXT=true
+```

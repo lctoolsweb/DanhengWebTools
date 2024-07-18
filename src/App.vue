@@ -1,41 +1,40 @@
 <template>
   <router-view></router-view>
+  <ClickEffect />
   <Watermark />
 </template>
+
 <script setup lang="ts">
-import { title } from 'process'
-import { useAppStore } from './store/modules/app'
+import { useAppStore } from './store/modules/app';
+import { ref, watch, onMounted } from 'vue';
+import { darkTheme, lightTheme } from 'naive-ui';
+import ClickEffect from './components/ClickEffect.vue';
+import Watermark from './components/Watermark.vue';
 
-import { ref, watch,onMounted } from 'vue'
-import { darkTheme, lightTheme } from 'naive-ui'
-import Watermark from './components/Watermark.vue'
-const appStore = useAppStore()
-const apptheme = ref()
-
-
+const appStore = useAppStore();
+const apptheme = ref();
 
 watch(
   () => appStore.theme,
   () => {
-    const theme: string = appStore.theme
+    const theme: string = appStore.theme;
     if (theme == 'dark') {
-      apptheme.value = darkTheme
+      apptheme.value = darkTheme;
     } else {
-      apptheme.value = lightTheme
+      apptheme.value = lightTheme;
     }
   },
   {
     immediate: true,
   },
-)
-
+);
 
 onMounted(() => {
-  const WSS = localStorage.getItem("WSS")
+  const WSS = localStorage.getItem("WSS");
   if (WSS) {
-    appStore.socketConnect(WSS)
+    appStore.socketConnect(WSS);
   }
-})
+});
 </script>
 
 <style>
