@@ -77,11 +77,11 @@ let constantRoutes = [
       },
       {
         path: "/start/login",
-        component: () => import('@/pages/start/GCAuth/login.vue'),
+        component: () => import('@/pages/start/manager/login.vue'),
       },
       {
         path: "/start/register",
-        component: () => import('@/pages/start/GCAuth/register.vue'),
+        component: () => import('@/pages/start/manager/register.vue'),
       },
       {
         path: "/start/avatar",
@@ -96,13 +96,14 @@ let constantRoutes = [
         component: () => import('@/pages/start/components/page1.vue'),
       },
       {
-        path: "/start/changepassword",
-        component: () => import('@/pages/start/GCAuth/changepassword.vue'),
+        path: "/start/information",
+        component: () => import('@/pages/start/manager/information.vue'),
       },
       {
         path: "/start/scene",
         component: () => import('@/pages/start/components/scene.vue'),
       }
+      
     ]
   }
 

@@ -19,8 +19,8 @@
         <a-menu-item key="/start/note" @click="topath('/start/note')">
           发病文学生成器
         </a-menu-item>
-        <a-menu-item key="/start/player" @click="topath('/start/player')">
-          玩家信息
+        <a-menu-item key="/start/player" @click="topath('/start/information')">
+          服务器状态
   </a-menu-item>
 
       </a-sub-menu>
