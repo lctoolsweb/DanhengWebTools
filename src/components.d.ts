@@ -20,6 +20,7 @@ declare module '@vue/runtime-core' {
     ARow: typeof import('@arco-design/web-vue')['Row']
     ASpace: typeof import('@arco-design/web-vue')['Space']
     ASubMenu: typeof import('@arco-design/web-vue')['SubMenu']
+    ATextarea: typeof import('@arco-design/web-vue')['Textarea']
     ClickEffect: typeof import('./components/ClickEffect.vue')['default']
     Footer: typeof import('./components/footer/index.vue')['default']
     Header: typeof import('./components/Header/index.vue')['default']
