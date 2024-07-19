@@ -1,6 +1,7 @@
 <template>
   <div>
-    <a-card bordered>
+    <!-- 服务器状态页面 -->
+    <a-card v-if="!hasError" bordered>
       <template #title>
         <div class="card-title">
           <span>服务器状态</span>
@@ -51,6 +52,25 @@
         </a-col>
       </a-row>
     </a-card>
+
+    <!-- 错误页面 -->
+    <a-result v-if="hasError" status="error" title="获取服务器状态失败">
+      <template #icon>
+        <IconFaceFrownFill />
+      </template>
+      <template #subtitle>{{ errorMessage }}</template>
+
+      <template #extra>
+        <a-button type="primary" @click="refresh">Refresh</a-button>
+      </template>
+      <a-typography style="background: var(--color-fill-2); padding: 24px;">
+        <a-typography-paragraph>Try:</a-typography-paragraph>
+        <ul>
+          <li>检查您的网络</li>
+          <li>将上方报错信息反馈给服务器管理员</li>
+        </ul>
+      </a-typography>
+    </a-result>
   </div>
 </template>
 
@@ -58,14 +78,22 @@
 import axios from 'axios';
 import { Message } from '@arco-design/web-vue';
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
+import { IconMoonFill, IconSunFill, IconFaceFrownFill } from '@arco-design/web-vue/es/icon';
 
 export default {
   name: 'ServerStatus',
+  components: {
+    IconMoonFill,
+    IconSunFill,
+    IconFaceFrownFill,
+  },
   setup() {
     const serverInfo = ref({});
     const intervalId = ref(null);
     const countdownPercent = ref(1);
     const countdownIntervalId = ref(null);
+    const hasError = ref(false);
+    const errorMessage = ref('');
 
     const cpuUsagePercent = computed(() => {
       return serverInfo.value.cpuUsage ? Number((serverInfo.value.cpuUsage / 100).toFixed(2)) : 0;
@@ -88,8 +116,7 @@ export default {
         });
 
         if (authResponse.data.code !== 0) {
-          Message.error('授权失败');
-          return;
+          throw new Error('授权失败');
         }
 
         const sessionId = authResponse.data.data.sessionId;
@@ -100,11 +127,14 @@ export default {
 
         if (serverResponse.data.code === 0) {
           serverInfo.value = serverResponse.data.data;
+          hasError.value = false;
         } else {
-          Message.error('获取服务器信息失败');
+          throw new Error('获取服务器信息失败');
         }
       } catch (error) {
-        Message.error('请求失败');
+        hasError.value = true;
+        errorMessage.value = error.toJSON ? JSON.stringify(error.toJSON()) : error.message;
+        Message.error(error.message || '请求失败');
       }
     };
 
@@ -118,6 +148,12 @@ export default {
           countdown = 10;
         }
       }, 1000);
+    };
+
+    const refresh = () => {
+      hasError.value = false;
+      errorMessage.value = '';
+      fetchServerInfo();
     };
 
     onMounted(() => {
@@ -135,7 +171,10 @@ export default {
       serverInfo,
       cpuUsagePercent,
       memoryUsagePercent,
-      countdownPercent
+      countdownPercent,
+      hasError,
+      errorMessage,
+      refresh
     };
   }
 };
