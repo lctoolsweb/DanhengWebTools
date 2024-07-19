@@ -9,27 +9,32 @@
           <span :class="latencyClass">{{ latency }} ms</span>
 
           <a href="https://github.com/lctoolsweb/LunarCoreTools/" target="_blank" rel="noopener noreferrer" class="github-link">
-            <img src="@/components/icon/BiGithub.svg" alt="GitHub Icon" :class="{ 'dark-icon': theme === 'dark' }" class="icon" />
+            <icon-github :class="{ 'dark-icon': theme === 'dark' }" class="icon" />
           </a>
 
           <a href="http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=J54m8XB3Ig8VJ41ICO8KW029aSz4fFB-&authKey=tq9%2BSsg2M30Jy1v9OwJEa%2B%2FmarnH2AslQYQsv24BkkeqY39%2FtlpZsrIkqO01SScg&noverify=0&group_code=124750952" target="_blank" rel="noopener noreferrer" class="qq-link">
-            <img src="@/components/icon/BiTencentQq.svg" alt="Tencent QQ Icon" :class="{ 'dark-icon': theme === 'dark' }" class="icon" />
+            <icon-qq-circle-fill :class="{ 'dark-icon': theme === 'dark' }" class="icon" />
           </a>
 
           <button @click="toggleTheme" class="theme-toggle">
-            <img v-if="theme === 'light'" src="@/components/icon/IonMdMoon.svg" :class="{ 'dark-icon': theme === 'dark' }" alt="Moon Icon" class="icon" />
-            <img v-else src="@/components/icon/IonMdSunny.svg" :class="{ 'dark-icon': theme === 'dark' }" alt="Sunny Icon" class="icon" />
+            <icon-moon v-if="theme === 'light'" :class="{ 'dark-icon': theme === 'dark' }" class="icon theme-icon" />
+            <icon-sun v-else :class="{ 'dark-icon': theme === 'dark' }" class="icon theme-icon" />
           </button>
         </div>
       </template>
     </a-page-header>
   </div>
 </template>
-
-
-
 <script>
+import { IconGithub, IconQqCircleFill, IconMoon, IconSun } from '@arco-design/web-vue/es/icon';
+
 export default {
+  components: {
+    IconGithub,
+    IconQqCircleFill,
+    IconMoon,
+    IconSun
+  },
   data() {
     return {
       theme: 'light',
@@ -89,9 +94,7 @@ export default {
     }
   }
 };
-
 </script>
-
 <style>
 .full-screen {
   width: 100vw;
@@ -122,6 +125,10 @@ button {
 .icon {
   width: 24px;
   height: 24px;
+  margin-right: 10px; /* 通过增加 margin-right 来拉大图标之间的间距 */
+}
+.theme-icon {
+  margin-bottom: 4px; /* 通过调整这个值来移动图标位置 */
 }
 .dark-icon {
   filter: invert(1);
@@ -135,5 +142,5 @@ button {
 .latency-red {
   color: red;
 }
-
 </style>
+

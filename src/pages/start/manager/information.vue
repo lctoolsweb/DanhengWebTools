@@ -122,7 +122,10 @@ export default {
         const sessionId = authResponse.data.data.sessionId;
 
         const serverResponse = await axios.get(`${dispatchServer}/muip/server_information`, {
-          params: { SessionId: sessionId }
+          params: { SessionId: sessionId },
+          headers: {
+        'Accept': 'application/json, text/plain, */*' // 确保 headers 只有必要的部分
+      }
         });
 
         if (serverResponse.data.code === 0) {
