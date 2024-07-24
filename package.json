@@ -4,10 +4,9 @@
   "author": "moraxs",
   "scripts": {
     "dev": "vite --mode development",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "node build.js",
     "preview": "vite preview",
     "build:dev": "vite build --mode development",
-    "build:pro": "vite build --mode production && echo 'Production build completed successfully' && exit 0 || exit 1",
     "serve": "vite preview",
     "plop": "plop",
     "lint": "eslint src --fix --ext .ts,.tsx,.vue,.js,.jsx",

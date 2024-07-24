@@ -38,7 +38,7 @@ npm run dev
 
 ## 打包build运行(推荐)
 `
-npm run build:pro  
+npm run build
 `
 `
 npm install http-server  
