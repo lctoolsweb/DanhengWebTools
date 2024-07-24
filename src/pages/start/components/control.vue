@@ -18,7 +18,7 @@
           <a-button type="primary" shape="round" size="large" html-type="reset" @click="handleReset">重置</a-button>
         </a-space>
       </a-form-item>
-      <a-form-item label="返回数据">
+      <a-form-item label="response">
         <a-input v-model="responseData" :disabled="true" />
       </a-form-item>
     </a-form>
@@ -26,11 +26,10 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref, onMounted } from 'vue';
+import { reactive, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
 import axios from 'axios';
 import JSEncrypt from 'jsencrypt';
-
 
 const ADMIN_KEY = import.meta.env.VITE_DANHENG_ADMIN_KEY;
 const API_BASE_URL = import.meta.env.VITE_DANHENG_DISPATCH_SERVER;
@@ -102,6 +101,9 @@ const handleSubmit = async (data: { values: Record<string, any>; errors: Record<
     if (execCmdRes.data.code !== 0) {
       throw new Error('命令提交失败: ' + execCmdRes.data.message);
     }
+
+    // 保存uid到localStorage
+    localStorage.setItem('lastSubmittedUid', form.uid);
 
     const decodedMessage = base64Decode(execCmdRes.data.data.message);
 

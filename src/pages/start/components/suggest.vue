@@ -79,7 +79,7 @@ onMounted(async () => {
   const uid = localStorage.getItem('uid');
 
   if (!address || !adminpass || !uid) {
-    Message.info('用户未登录，请重试');
+    Message.info('页面正在建设中，敬请期待Ψ(￣∀￣)Ψ');
     return;
   }
 

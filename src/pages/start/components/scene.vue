@@ -33,7 +33,7 @@ const { text, isSupported, copy } = useClipboard()
 const appStore = useAppStore()
 
 var value2 = ref(10000)
-var value3 = ref('/scene')
+var value3 = ref('scene change')
 
 const value = computed(() => {
   return `${value3.value} ${value2.value}`

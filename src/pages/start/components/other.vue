@@ -13,7 +13,7 @@
           <a-input v-model="item.value" placeholder="" disabled />
         </div>
         <div>
-          <a-button type="outline" @click="copyvalue(item.value)">复制</a-button>
+          <a-button type="primary"  @click="copyvalue(item.value)">复制</a-button>
           <a-button type="outline" v-if="appStore.isLogin" @click="send(item.value)">执行</a-button>
         </div>
       </div>
@@ -34,15 +34,15 @@ const { t, locale } = useI18n()
 const options = reactive([
   {
     title: '获得全部角色',
-    value: '/giveall avatars',
+    value: '/giveall avatar r6 l80',
   },
   {
     title: '获得所有武器',
-    value: '/giveall lightcones lv80 r5',
+    value: '/giveall equipment r5 l80',
   },
   {
-    title: '获得所有材料',
-    value: '/giveall materials',
+    title: '解锁所有任务',
+    value: '/unlockall mission',
   },
   {
     title: '站场角色满级',
@@ -69,8 +69,8 @@ const options = reactive([
     value: '/clear all',
   },
   {
-    title: '回满血',
-    value: '/heal',
+    title: '治疗队伍所有角色',
+    value: '/lineup heal',
   },
   {
     title: '在世界中补充战技点',
@@ -78,19 +78,16 @@ const options = reactive([
   },
   {
     title: '属性特别离谱的遗器',
-    value: '/give 63126 x1 lv999 s2 7:10000 8:10000 9:10000 5:10000',
+    value: '/relic 63126 l999 2 7:10000 8:10000 9:10000 5:10000',
   },
-  {
-    title: '将配队改为四个托帕',
-    value: '/lineup 1112 1112 1112 1112',
-  },
+  
   {
     title: '切换男主(重启生效)',
-    value: '/gender male',
+    value: '/hero gender 1',
   },
   {
     title: '切换女主(重启生效)',
-    value: '/gender female',
+    value: '/hero gender 1',
   },
 ])
 

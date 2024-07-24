@@ -30,11 +30,12 @@ import page1 from './json/holyrelic2.json'
 import { useAppStore } from '@/store/modules/app'
 import axios from 'axios'
 import qs from 'qs'
+import JSEncrypt from 'jsencrypt';
 const { text, isSupported, copy } = useClipboard()
 const appStore = useAppStore()
 
 var value2 = ref('先选择角色再选择遗器部位')
-var value3 = ref('/give')
+var value3 = ref('relic')
 
 const value = computed(() => {
   
@@ -47,6 +48,8 @@ const value = computed(() => {
 const options = reactive(page1)
 
 const message = Message
+const ADMIN_KEY = import.meta.env.VITE_DANHENG_ADMIN_KEY;
+const API_BASE_URL = import.meta.env.VITE_DANHENG_DISPATCH_SERVER;
 
 function copyvalue() {
   copy(value.value)
@@ -67,38 +70,67 @@ onMounted(() => {
   }, 1000)
 })
 
-const execute = () => {
-  const address = localStorage.getItem('address')
-  const uid = localStorage.getItem('uid')
-  const adminpass = localStorage.getItem('adminpass')
+const execute = async () => {
+  const uid = localStorage.getItem('lastSubmittedUid');
 
-  if (!address || !uid || !adminpass) {
-    message.info('用户未登录，请重试')
-  } else {
-    const command = `${value3.value} ${value2.value}`
-    const data = { uid, adminpass, command }
-
-    axios.post(address, qs.stringify(data), {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    })
-      .then(response => {
-        if (response.data.retcode === 0) {
-          message.success('执行成功！')
-        } else {
-          const errorMessage = `执行失败：error: ${response.data.retcode} ${response.data.data?.msg || ''}`
-          message.error(errorMessage)
-        }
-        console.log(response)
-      })
-      .catch(error => {
-        const errorMessage = `执行失败：${error.message}`
-        message.error(errorMessage)
-        console.error(error)
-      })
+  if (!uid) {
+    message.info('用户未登录,请先前往”远程“页面执行一次命令，然后重试');
+    return;
   }
-}
+
+  const command = value.value;
+
+  try {
+    // Step 1: 获取授权
+    const authRes = await axios.post(`${API_BASE_URL}/muip/auth_admin`, {
+      admin_key: ADMIN_KEY,
+      key_type: 'PEM'
+    });
+
+    if (authRes.data.code !== 0) {
+      throw new Error('授权失败: ' + authRes.data.message);
+    }
+
+    const { rsaPublicKey, sessionId } = authRes.data.data;
+
+    // Step 2: 使用rsaPublicKey加密命令
+    const encrypt = new JSEncrypt();
+    encrypt.setPublicKey(rsaPublicKey);
+    const encryptedCommand = encrypt.encrypt(command);
+
+    if (!encryptedCommand) {
+      throw new Error('命令加密失败');
+    }
+
+    // Step 3: 提交命令
+    const execCmdRes = await axios.post(`${API_BASE_URL}/muip/exec_cmd`, {
+      SessionId: sessionId,
+      Command: encryptedCommand,
+      TargetUid: uid
+    });
+
+    if (execCmdRes.data.code !== 0) {
+      throw new Error('命令提交失败: ' + execCmdRes.data.message);
+    }
+
+    const decodedMessage = base64Decode(execCmdRes.data.data.message);
+
+    message.success(`命令提交成功：${decodedMessage}`);
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : '请求失败';
+    message.error(errorMessage);
+    console.error(err);
+  }
+};
+
+const base64Decode = (str: string): string => {
+  try {
+    return decodeURIComponent(escape(window.atob(str)));
+  } catch (e) {
+    console.error('Base64解码失败:', e);
+    return '解码失败';
+  }
+};
 
 
 </script>
