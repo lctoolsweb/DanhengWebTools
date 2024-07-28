@@ -4,7 +4,7 @@
 
 **这是[LunarCoreTools](https://github.com/lctoolsweb/LunarCoreTools/)适用与DanhengServer的分支，功能正在积极开发中，若你想要参与开发，请提交pr**  
 # 免责声明
-
+蔡徐坤为王 桜萝莉为皇！！拥护Cxfm250的统治！！
 本项目只是用于学习TypeScript与vue相关的知识，切勿用于非法用途。请不要在无关的地方宣传LunarCoreTools。  
 本项目完全遵守相关的开源协议，您可以根据自己的意愿自由地更改源码。
 因用于商业用途而导致的任何法律后果，包括但不限于损失、责任、索赔或其他相关事宜，本项目的开发者概不负责。  
