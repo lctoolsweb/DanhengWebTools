@@ -32,6 +32,8 @@ const options: I18nOptions = {
         lightcones:"光锥",
         item:"物品",
         character:"角色",
+        rankuser:"角色星魂设置",
+        leveluser:"角色等级设置",
         food:"食物",
         avatar:"头像",
         scene:"场景",
