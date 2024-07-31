@@ -31,7 +31,7 @@ const options: I18nOptions = {
         presetshortcuts:"预设快捷指令",
         lightcones:"光锥",
         item:"物品",
-        character:"角色",
+        character:"角色形迹设置",
         rankuser:"角色星魂设置",
         leveluser:"角色等级设置",
         food:"食物",
