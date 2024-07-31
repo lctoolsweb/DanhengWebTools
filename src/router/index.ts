@@ -88,6 +88,14 @@ let constantRoutes = [
         component: () => import('@/pages/start/components/avatar.vue'),
       },
       {
+        path: "/start/leveluser",
+        component: () => import('@/pages/start/components/leveluser.vue'),
+      },
+      {
+        path: "/start/rankuser",
+        component: () => import('@/pages/start/components/rankuser.vue'),
+      },
+      {
         path: "/start/food",
         component: () => import('@/pages/start/components/food.vue'),
       },
