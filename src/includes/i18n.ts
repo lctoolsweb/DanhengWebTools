@@ -20,6 +20,7 @@ const options: I18nOptions = {
         views:"截至目前,LunarCoreWebTools已经被安装/访问了",
         time:"次   © 2024 lctoolsweb",
         introduce:"适用于LunarCore的web命令生成器",
+        typename:"角色：",
       },
       menu:{
         main:"控制台代码生成",
