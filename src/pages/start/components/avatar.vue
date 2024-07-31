@@ -12,12 +12,8 @@
         <a-cascader allow-search v-model="value2" :options="options" placeholder="" filterable />
       </div>
       <div class="commuse-item">
-        <div class="text-slate-900 dark:text-slate-100"> 等级: </div>
+        <div class="text-slate-900 dark:text-slate-100"> 行迹等级: </div>
         <a-input-number v-model="grade" placeholder="请输入数量" mode="button" size="large" class="input-demo" />
-      </div>
-      <div class="commuse-item">
-        <div class="text-slate-900 dark:text-slate-100"> 星魂等级: </div>
-        <a-input-number v-model="num" placeholder="请输入数量" mode="button" size="large" class="input-demo" />
       </div>
       <div class="generate">
         <a-input v-model="value" placeholder="" />
@@ -25,6 +21,7 @@
         <a-button type="primary" shape="round" size="large" @click="execute">执行</a-button>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -36,6 +33,9 @@ import { useAppStore } from '@/store/modules/app'
 import axios from 'axios'
 import avatar from './json/avatar.json'
 import JSEncrypt from 'jsencrypt';
+import {useI18n} from "vue-i18n";
+
+const { t, locale } = useI18n();
 
 const ADMIN_KEY = import.meta.env.VITE_DANHENG_ADMIN_KEY;
 const API_BASE_URL = import.meta.env.VITE_DANHENG_DISPATCH_SERVER;
@@ -44,11 +44,11 @@ const { text, isSupported, copy } = useClipboard()
 const appStore = useAppStore()
 
 const value2 = ref(1001)
-const grade = ref(80)
-const num = ref(6)
+const grade = ref(10)
+
 
 const value = computed(() => {
-  return `avatar get ${value2.value} l${grade.value} r${num.value}`
+  return `avatar talent ${value2.value} ${grade.value}`
 })
 
 const options = reactive(avatar)
@@ -156,14 +156,14 @@ onMounted(() => {
 .commuse-item {
   display: flex;
   align-items: center;
-  color: #000;
   margin: 18px 0;
 
-  >div {
+  > div {
     &:nth-child(1) {
       width: 150px;
       text-align: right;
       padding-right: 10px;
+      color: #6b6a6a !important;  /* 使用 !important 提高优先级 */
     }
   }
 }
