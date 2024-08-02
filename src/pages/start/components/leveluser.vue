@@ -8,11 +8,11 @@
     <!-- 原有的组件内容 -->
     <div class="commuse">
       <div class="commuse-item">
-        <div class="text-slate-900 dark:text-slate-100"> 角色: </div>
+        <div class="text-neutral-400 dark:text-slate-100">{{ t('main.typename') }}</div>
         <a-cascader allow-search v-model="value2" :options="options" placeholder="" filterable />
       </div>
       <div class="commuse-item">
-        <div class="text-slate-900 dark:text-slate-100"> 行迹等级: </div>
+        <div class="text-slate-900 dark:text-slate-100"> 角色等级: </div>
         <a-input-number v-model="grade" placeholder="请输入数量" mode="button" size="large" class="input-demo" />
       </div>
       <div class="generate">
@@ -31,7 +31,7 @@ import { useClipboard } from '@vueuse/core'
 import { Message } from '@arco-design/web-vue'
 import { useAppStore } from '@/store/modules/app'
 import axios from 'axios'
-import avatar from './json/avatar.json'
+import leveluser from './json/avatar.json'
 import JSEncrypt from 'jsencrypt';
 import {useI18n} from "vue-i18n";
 
@@ -44,14 +44,14 @@ const { text, isSupported, copy } = useClipboard()
 const appStore = useAppStore()
 
 const value2 = ref(1001)
-const grade = ref(10)
+const grade = ref(80)
 
 
 const value = computed(() => {
-  return `avatar talent ${value2.value} ${grade.value}`
+  return `avatar level ${value2.value} ${grade.value}`
 })
 
-const options = reactive(avatar)
+const options = reactive(leveluser)
 const message = Message
 
 function copyvalue() {

@@ -214,5 +214,9 @@
   { 
     "label": "{NICKNAME}", 
     "value": 8006  
+  },
+  { 
+    "label": "所有角色", 
+    "value": -1  
   }
 ] 

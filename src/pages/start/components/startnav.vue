@@ -46,6 +46,8 @@ const datav = reactive([
   { name: 'LightCones', path: "/start/weapon" },
   { name: 'item', path: "/start/thing" },
   { name: 'character', path: "/start/avatar" },
+  { name: 'rankuser', path: "/start/rankuser" },
+  { name: 'leveluser', path: "/start/leveluser" },
   { name: 'food', path: "/start/food" },
   { name: 'avatar', path: "/start/page1" },
   { name: 'scene', path: "/start/scene" },
