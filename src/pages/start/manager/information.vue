@@ -78,13 +78,11 @@
 import axios from 'axios';
 import { Message } from '@arco-design/web-vue';
 import { ref, onMounted, onBeforeUnmount, computed } from 'vue';
-import { IconMoonFill, IconSunFill, IconFaceFrownFill } from '@arco-design/web-vue/es/icon';
+import { IconFaceFrownFill } from '@arco-design/web-vue/es/icon';
 
 export default {
   name: 'ServerStatus',
   components: {
-    IconMoonFill,
-    IconSunFill,
     IconFaceFrownFill,
   },
   setup() {
@@ -107,26 +105,8 @@ export default {
 
     const fetchServerInfo = async () => {
       try {
-        const dispatchServer = import.meta.env.VITE_DANHENG_DISPATCH_SERVER;
-        const adminKey = import.meta.env.VITE_DANHENG_ADMIN_KEY;
-
-        const authResponse = await axios.post(`${dispatchServer}/muip/auth_admin`, {
-          admin_key: adminKey,
-          key_type: 'PEM'
-        });
-
-        if (authResponse.data.code !== 0) {
-          throw new Error('授权失败');
-        }
-
-        const sessionId = authResponse.data.data.sessionId;
-
-        const serverResponse = await axios.get(`${dispatchServer}/muip/server_information`, {
-          params: { SessionId: sessionId },
-          headers: {
-        'Accept': 'application/json, text/plain, */*' // 确保 headers 只有必要的部分
-      }
-        });
+        const apiServer = import.meta.env.VITE_DHWT_API_SERVER;
+        const serverResponse = await axios.get(`${apiServer}/api/status`);
 
         if (serverResponse.data.code === 0) {
           serverInfo.value = serverResponse.data.data;

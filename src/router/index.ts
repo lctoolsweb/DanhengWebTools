@@ -110,6 +110,10 @@ let constantRoutes = [
       {
         path: "/start/scene",
         component: () => import('@/pages/start/components/scene.vue'),
+      },
+      {
+        path: "/start/commandplayground",
+        component: () => import('@/pages/start/manager/commandplayground.vue'),
       }
       
     ]

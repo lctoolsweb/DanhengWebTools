@@ -2,7 +2,6 @@
   <div>
     <div :style="{ height: '20px' }"></div>
     <a-form :model="form" class="form-container" @submit="handleSubmit">
-      
       <a-form-item field="keyType" label="Key Type">
         <a-input v-model="form.keyType" placeholder="请输入Key Type..." />
       </a-form-item>
@@ -22,20 +21,19 @@
         <a-input v-model="responseData" :disabled="true" />
       </a-form-item>
     </a-form>
+    
   </div>
 </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
 import { Message } from '@arco-design/web-vue';
-import axios from 'axios';
-import JSEncrypt from 'jsencrypt';
+import axios, { AxiosError } from 'axios';
+const API_BASE_URL = import.meta.env.VITE_DHWT_API_SERVER;
 
-const ADMIN_KEY = import.meta.env.VITE_DANHENG_ADMIN_KEY;
-const API_BASE_URL = import.meta.env.VITE_DANHENG_DISPATCH_SERVER;
+type AlertType = 'success' | 'info' | 'warning' | 'error';
 
 const form = reactive({
-  adminKey: ADMIN_KEY,
   keyType: 'PEM',
   uid: '',
   command: ''
@@ -43,17 +41,8 @@ const form = reactive({
 
 const responseData = ref('');
 const showMessage = ref(false);
-const messageType = ref<'error' | 'success' | ''>('');
+const messageType = ref<AlertType>('info');
 const message = ref('');
-
-const base64Decode = (str: string): string => {
-  try {
-    return decodeURIComponent(escape(window.atob(str)));
-  } catch (e) {
-    console.error('Base64解码失败:', e);
-    return '解码失败';
-  }
-};
 
 const handleReset = () => {
   localStorage.clear();
@@ -62,7 +51,7 @@ const handleReset = () => {
   form.command = "";
   responseData.value = "";
   showMessage.value = false;
-  messageType.value = "";
+  messageType.value = 'info';
   message.value = "";
 };
 
@@ -70,50 +59,38 @@ const handleSubmit = async (data: { values: Record<string, any>; errors: Record<
   ev.preventDefault();
 
   try {
-    // Step 1: 获取授权
-    const authRes = await axios.post(`${API_BASE_URL}/muip/auth_admin`, {
-      admin_key: form.adminKey,
-      key_type: form.keyType
+    const res = await axios.post(`${API_BASE_URL}/api/submit`, {
+      keyType: form.keyType,
+      uid: form.uid,
+      command: form.command
     });
+
     
-    if (authRes.data.code !== 0) {
-      throw new Error('授权失败: ' + authRes.data.message);
-    }
+    const responseMessage = res.data.message; 
+    if (res.data.code === 0) {
+      localStorage.setItem('uid', form.uid);
+      console.log('UID stored:', localStorage.getItem('uid'));
+}
 
-    const { rsaPublicKey, sessionId } = authRes.data.data;
-
-    // Step 2: 使用rsaPublicKey加密命令
-    const encrypt = new JSEncrypt();
-    encrypt.setPublicKey(rsaPublicKey);
-    const encryptedCommand = encrypt.encrypt(form.command);
-
-    if (!encryptedCommand) {
-      throw new Error('命令加密失败');
-    }
-
-    // Step 3: 提交命令
-    const execCmdRes = await axios.post(`${API_BASE_URL}/muip/exec_cmd`, {
-      SessionId: sessionId,
-      Command: encryptedCommand,
-      TargetUid: form.uid
-    });
-
-    if (execCmdRes.data.code !== 0) {
-      throw new Error('命令提交失败: ' + execCmdRes.data.message);
-    }
-
-    // 保存uid到localStorage
-    localStorage.setItem('lastSubmittedUid', form.uid);
-
-    const decodedMessage = base64Decode(execCmdRes.data.data.message);
-
-    responseData.value = JSON.stringify(execCmdRes.data, null, 2);
+    responseData.value = JSON.stringify(res.data, null, 2);
     showMessage.value = true;
     messageType.value = 'success';
-    message.value = `命令提交成功：${decodedMessage}`;
-    Message.success(`命令提交成功：${decodedMessage}`);
+    message.value = `命令提交成功：${responseMessage}`;
+    Message.success(`命令提交成功：${responseMessage}`);
   } catch (err: unknown) {
-    const errorMessage = err instanceof Error ? err.message : '请求失败';
+    let errorMessage = '请求失败';
+    if (axios.isAxiosError(err)) {
+      if (err.response) {
+        if (err.response.status === 429) {
+          errorMessage = '请求速率过快，请稍后重试';
+        } else {
+          errorMessage = (err.response.data as { error?: string }).error || err.response.statusText;
+        }
+      } else {
+        errorMessage = err.message;
+      }
+    }
+
     showMessage.value = true;
     messageType.value = 'error';
     message.value = errorMessage;

@@ -2,13 +2,13 @@
   <div class="full-screen">
     <a-page-header
       :style="{ width: '100vw', background: theme === 'dark' ? 'black' : 'white' }"
-      title="Ciallo～(∠・ω< )⌒☆Tools"
+      title="DanhengWebTools"
     >
       <template #extra>
         <div class="extra-container">
           <span :class="latencyClass">{{ latency }} ms</span>
 
-          <a href="https://github.com/lctoolsweb/LunarCoreTools/" target="_blank" rel="noopener noreferrer" class="github-link">
+          <a href="https://github.com/lctoolsweb/DanhengWebTools" target="_blank" rel="noopener noreferrer" class="github-link">
             <icon-github :class="{ 'dark-icon': theme === 'dark' }" class="icon" />
           </a>
 
@@ -25,6 +25,7 @@
     </a-page-header>
   </div>
 </template>
+
 <script>
 import { IconGithub, IconQqCircleFill, IconMoon, IconSun } from '@arco-design/web-vue/es/icon';
 
@@ -72,29 +73,26 @@ export default {
     },
     fetchLatency() {
       const start = Date.now();
-      fetch(`${import.meta.env.VITE_DANHENG_DISPATCH_SERVER}/muip/auth_admin`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          admin_key: import.meta.env.VITE_DANHENG_ADMIN_KEY,
-          key_type: 'pem'
-        })
+
+      fetch(`${import.meta.env.VITE_DHWT_API_SERVER}/`, {
+        method: 'HEAD',
+        mode: 'no-cors'
       })
-      .then(response => response.json())
       .then(() => {
         const end = Date.now();
-        const latency = end - start; // 计算延迟时间
-        this.latency = latency; // 更新延迟
+        const latency = end - start;
+        this.latency = latency;
       })
       .catch(error => {
-        console.error('Error fetching latency:', error);
+        if (!error.message.includes('404')) {
+          console.error('Error fetching latency:', error);
+        }
       });
     }
   }
 };
 </script>
+
 <style>
 .full-screen {
   width: 100vw;
@@ -143,4 +141,3 @@ button {
   color: red;
 }
 </style>
-

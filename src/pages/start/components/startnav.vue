@@ -10,7 +10,7 @@
           {{ t(`menu.${item.name.toLowerCase()}`) }}
         </a-menu-item>
       </a-sub-menu>
-      <!-- 新增的“大类：其他” -->
+      
       <a-sub-menu key="3">
         <template #icon>
           <IconBug></IconBug>
@@ -21,6 +21,9 @@
         </a-menu-item>
         <a-menu-item key="/start/player" @click="topath('/start/information')">
           服务器状态
+  </a-menu-item>
+  <a-menu-item key="/start/commandplayground" @click="topath('/start/commandplayground')">
+          指令广场
   </a-menu-item>
 
       </a-sub-menu>
