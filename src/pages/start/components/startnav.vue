@@ -19,6 +19,9 @@
         <a-menu-item key="/start/note" @click="topath('/start/note')">
           发病文学生成器
         </a-menu-item>
+        <a-menu-item key="/start/about" @click="topath('/start/about')">
+          关于
+        </a-menu-item>
         <a-menu-item key="/start/player" @click="topath('/start/information')">
           服务器状态
   </a-menu-item>
@@ -55,7 +58,7 @@ const datav = reactive([
   { name: 'avatar', path: "/start/page1" },
   { name: 'scene', path: "/start/scene" },
   { name: 'RemoteControl', path: "/start/control" },
-  { name: 'about', path: "/start/about" },
+  
   { name: 'suggest', path: "/start/suggest" },
 ])
 

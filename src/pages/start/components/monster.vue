@@ -59,7 +59,7 @@ var value2 = ref(1004010)
 var value3 = ref(1)
 
 const value = computed(() => {
-  return `/spawn ${value2.value} ${value3.value} x${amount.value} lv${level.value} r${radius.value}`
+  return `spawn ${value2.value} ${value3.value} x${amount.value} lv${level.value} r${radius.value}`
 })
 
 const options = ref([] as { label: string; value: number }[]);
@@ -103,38 +103,39 @@ onMounted(() => {
     showNotice.value = true
   }, 1000);
 });
-const execute = () => {
-  const address = localStorage.getItem('address')
-  const uid = localStorage.getItem('uid')
-  const adminpass = localStorage.getItem('adminpass')
+const API_BASE_URL = import.meta.env.VITE_DHWT_API_SERVER;
 
-  if (!address || !uid || !adminpass) {
-    message.info('用户未登录，请重试')
-  } else {
-    const command = `spawn ${value2.value} ${value3.value} x${amount.value} lv${level.value} r${radius.value}`
-    const data = { uid, adminpass, command }
+const execute = async () => {
+  //读取localStorage中存储的uid
+  const uid = localStorage.getItem('uid');
 
-    axios.post(address, qs.stringify(data), {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    })
-      .then(response => {
-        if (response.data.retcode === 0) {
-          message.success('执行成功！')
-        } else {
-          const errorMessage = `执行失败：error: ${response.data.retcode} ${response.data.data?.msg || ''}`
-          message.error(errorMessage)
-        }
-        console.log(response)
-      })
-      .catch(error => {
-        const errorMessage = `执行失败：${error.message}`
-        message.error(errorMessage)
-        console.error(error)
-      })
+  if (!uid) {
+    message.info('用户未登录，请先前往“远程”页面执行一次命令，然后重试');
+    return;
   }
-}
+
+  const command = value.value;
+
+  try {
+    // 发送请求到后端
+    const res = await axios.post(`${API_BASE_URL}/api/submit`, {
+      keyType: 'PEM',  
+      uid: uid,
+      command: command
+    });
+
+    if (res.data.code !== 0) {
+      throw new Error('命令提交失败: ' + res.data.message);
+    }
+    const responseMessage = res.data.data.message;
+    message.success(`命令提交成功：${res.data.data.message}`);
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : '请求失败';
+    message.error(errorMessage);
+    console.error(err);
+  }
+};
+
 
 </script>
 

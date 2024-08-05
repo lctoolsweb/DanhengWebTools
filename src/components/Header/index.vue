@@ -74,9 +74,9 @@ export default {
     fetchLatency() {
       const start = Date.now();
 
-      fetch(`${import.meta.env.VITE_DHWT_API_SERVER}/`, {
-        method: 'HEAD',
-        mode: 'no-cors'
+      fetch(`${import.meta.env.VITE_DHWT_API_SERVER}/get`, {
+        method: 'get',
+        
       })
       .then(() => {
         const end = Date.now();

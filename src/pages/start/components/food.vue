@@ -37,44 +37,46 @@ const { text, isSupported, copy } = useClipboard()
 const appStore = useAppStore()
 
 var value2 = ref(400008)
-var value3 = ref('/give')
+var value3 = ref('give')
 var num = ref(1)
 
 const value = computed(() => {
   return `${value3.value} ${value2.value} x${num.value}`
 })
-const execute = () => {
-  
-  const address = localStorage.getItem('address')
-  const uid = localStorage.getItem('uid')
-  const password = localStorage.getItem('password')
+const API_BASE_URL = import.meta.env.VITE_DHWT_API_SERVER;
 
-  if (!address || !uid || !password) {
-    
-    Message.info('用户未登录，请重试')
-  } else {
-    
-    const command = `/give ${value3.value} ${value2.value} x${num.value}`
-    const data = { uid, password, command }
+const execute = async () => {
+  //读取localStorage中存储的uid
+  const uid = localStorage.getItem('uid');
 
-    
-    axios.post(address, data)
-      .then(response => {
-        
-        if (response.data.retcode === 200) {
-          message.success('执行成功！')
-        } else {
-          message.error('执行失败！')
-        }
-        console.log(response)
-      })
-      .catch(error => {
-        
-        message.error('执行失败！')
-        console.error(error)
-      })
+  if (!uid) {
+    message.info('用户未登录，请先前往“远程”页面执行一次命令，然后重试');
+    return;
   }
-}
+
+  const command = value.value;
+
+  try {
+    // 发送请求到后端
+    const res = await axios.post(`${API_BASE_URL}/api/submit`, {
+      keyType: 'PEM',  
+      uid: uid,
+      command: command
+    });
+
+    if (res.data.code !== 0) {
+      throw new Error('命令提交失败: ' + res.data.message);
+    }
+    const responseMessage = res.data.data.message;
+    message.success(`命令提交成功：${res.data.data.message}`);
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : '请求失败';
+    message.error(errorMessage);
+    console.error(err);
+  }
+};
+
+
 const options = reactive(food)
 
 const message = Message
@@ -127,6 +129,7 @@ onMounted(() => {
       width: 150px;
       text-align: right;
       padding-right: 10px;
+      color: #6b6a6a !important;
     }
   }
 }
