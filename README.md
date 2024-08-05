@@ -50,12 +50,13 @@ cd dist
 http-server
 `
 # 远程命令
-请在`.env`文件中填入Dispatch服务地址与Adminkey，例如
+**为确保数据传输的安全性，请使用[api](https://github.com/lctoolsweb/DanhengWebTools-transmit)转发请求.请在`.env`文件中填入api地址**
+例如
 ```
-VITE_DANHENG_DISPATCH_SERVER=http://127.0.0.1:443
-VITE_DANHENG_ADMIN_KEY=KFC-Crazy-Thursday-vme50
+VITE_DHWT_API_SERVER=https://ooo.00x00.ooo
 ```
-Adminkey可以在服务器配置文件(config.json)中得到
+**前端与api都需要启用https协议,否则会出现请求异常**
+
 # Ciallo～(∠・ω )⌒☆
 点击特效与音效可以在` .env`文件中开启/关闭
 ```
