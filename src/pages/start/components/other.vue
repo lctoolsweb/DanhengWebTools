@@ -32,25 +32,21 @@ const { text, isSupported, copy } = useClipboard()
 const appStore = useAppStore()
 const { t, locale } = useI18n()
 const options = reactive([
-  {
+   {
     title: '获得全部角色',
     value: '/giveall avatar r6 l80',
   },
   {
-    title: '获得所有武器',
-    value: '/giveall equipment r5 l80',
+    title: '获得所有光锥',
+    value: '/giveall equipment r5 l80 x1',
   },
   {
     title: '解锁所有任务',
     value: '/unlockall mission',
   },
   {
-    title: '站场角色满级',
-    value: '/avatar lv80 s10',
-  },
-  {
-    title: '均衡等级6',
-    value: '/worldlevel 6',
+    title: '已有所有角色满级',
+    value: '/avatar level -1 80',
   },
   {
     title: '开拓等级满级',
@@ -65,22 +61,13 @@ const options = reactive([
     value: '/give 102 x1000',
   },
   {
-    title: '清除所有物品',
-    value: '/clear all',
-  },
-  {
     title: '治疗队伍所有角色',
     value: '/lineup heal',
-  },
-  {
-    title: '在世界中补充战技点',
-    value: '/refill',
   },
   {
     title: '属性特别离谱的遗器',
     value: '/relic 63126 l999 2 7:10000 8:10000 9:10000 5:10000',
   },
-  
   {
     title: '切换男主(重启生效)',
     value: '/hero gender 1',
@@ -88,6 +75,18 @@ const options = reactive([
   {
     title: '切换女主(重启生效)',
     value: '/hero gender 1',
+  },
+  {
+    title: '切换主角命途为毁灭',
+    value: '/hero type 8001',
+  },
+  {
+    title: '切换主角命途为存护',
+    value: '/hero type 8003',
+  },
+  {
+    title: '切换主角命途为同谐',
+    value: '/hero type 8005',
   },
 ])
 
