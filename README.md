@@ -3,6 +3,9 @@
 ![introduce](https://socialify.git.ci/lctoolsweb/CialloTools/image?description=1&font=Source%20Code%20Pro&forks=1&issues=1&language=1&logo=https%3A%2F%2Fooo.0x0.ooo%2F2024%2F07%2F18%2FOR1UEB.png&name=1&owner=1&pulls=1&stargazers=1&theme=Light)
 
 **这是[LunarCoreTools](https://github.com/lctoolsweb/LunarCoreTools/)适用与DanhengServer的分支，功能正在积极开发中，若你想要参与开发，请提交pr**  
+# 📣📣重要通知
+**使用本工具时，请遵守相关的开源协议。您可以任意修改项目内的任何代码，但是，请不要修改项目内指向本仓库的Github徽标，否则，您将会出现在本项目的耻辱柱上**
+
 # 免责声明
 
 本项目只是用于学习TypeScript与vue相关的知识，切勿用于非法用途。请不要在无关的地方宣传LunarCoreTools。  

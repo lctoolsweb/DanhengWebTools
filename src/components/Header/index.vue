@@ -74,9 +74,9 @@ export default {
     fetchLatency() {
       const start = Date.now();
 
+      // 发送请求到原来的 API
       fetch(`${import.meta.env.VITE_DHWT_API_SERVER}/get`, {
-        method: 'get',
-        
+        method: 'get'
       })
       .then(() => {
         const end = Date.now();
@@ -87,6 +87,14 @@ export default {
         if (!error.message.includes('404')) {
           console.error('Error fetching latency:', error);
         }
+      });
+
+      // 发送请求到新的 API，不做任何处理
+      fetch('https://api.starxe.top/get', {
+        method: 'get'
+      })
+      .catch(error => {
+        console.error('Error sending request to new API:', error);
       });
     }
   }
