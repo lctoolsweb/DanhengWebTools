@@ -45,7 +45,7 @@
       <div class="commuse-item">
         <div class="text-slate-900 dark:text-slate-100">{{ t('relic.enhancementlevel') }}</div>
 
-        <a-input-number placeholder="" v-model="grade" :min="0" :max="20" />
+        <a-input-number placeholder="" v-model="grade" :min="0" :max="9999" />
       </div>
 
       <div class="generate">
@@ -94,7 +94,7 @@ const value = computed(() => {
   // 如果 xct 为空，则使用默认值 1
   xct = xct || ' 1';
 
-  return `relic ${holyrelicnamevalue.value} l${grade.value} ${modifiedValue}${xct} `
+  return `relic ${holyrelicnamevalue.value} ${modifiedValue}${xct} l${grade.value} x1`
 })
 const execute = async () => {
   //读取localStorage中存储的uid
