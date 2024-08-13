@@ -84,6 +84,10 @@ let constantRoutes = [
         component: () => import('@/pages/start/manager/register.vue'),
       },
       {
+        path: "/start/getrole",
+        component: () => import('@/pages/start/components/getrole.vue'),
+      },
+      {
         path: "/start/avatar",
         component: () => import('@/pages/start/components/avatar.vue'),
       },
