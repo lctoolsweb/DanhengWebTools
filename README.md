@@ -20,7 +20,8 @@
 + 中国商人1:Q群377591124 Q号2914592234
 + 中国商人李贞璟 Q号57366054 yile一乐圈服，四处倒卖圈钱
 
-
+# Android测试版
+[Android测试版本](https://github.com/xiaozhao147/DanhengWebTools/releases/download/0.0/DanhengWebTools.apk)
 # web版
 ## 多语言
 页面会根据当前浏览器语言自动调整语言，目前仅支持中文，英文，且部分(bushi)翻译工作尚未完成，若您想为项目的国际化做出贡献，请提交pr。

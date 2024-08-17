@@ -51,6 +51,7 @@ const datav = reactive([
   { name: 'Presetshortcuts', path: "/start/other" },
   { name: 'LightCones', path: "/start/weapon" },
   { name: 'item', path: "/start/thing" },
+    { name: 'getrole', path: "/start/getrole" },
   { name: 'character', path: "/start/avatar" },
   { name: 'rankuser', path: "/start/rankuser" },
   { name: 'leveluser', path: "/start/leveluser" },
