@@ -1,11 +1,12 @@
+
 <template>
   <div>
-    
     <div class="scrolling-notice" v-if="showNotice">
       <marquee behavior="scroll" direction="left">{{ noticeContent }}</marquee>
     </div>
-
-    
+    <a-alert type="warning">
+      跳过任务存在未知风险，您需要自己承担跳过任务可能导致的各种后果。
+    </a-alert>
     <div class="commuse">
       <div class="commuse-item">
         <div class="text-slate-900 dark:text-slate-100">任务类型:</div>
@@ -41,16 +42,15 @@
       </div>
 
       <div class="button-group">
-        <a-button type="primary" shape="round" size="large" @click="completeMainMission">完成主任务</a-button>
-        <a-button type="primary" shape="round" size="large" @click="completeSubMission">完成子任务</a-button>
+        <a-button type="primary" shape="round" size="large" @click="submitCommand('main')">完成主任务</a-button>
+        <a-button type="primary" shape="round" size="large" @click="submitCommand('sub')">完成子任务</a-button>
       </div>
     </div>
   </div>
 </template>
 
-
 <script setup>
-import { ref, watch, onMounted, computed } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import axios from 'axios';
 import { Message } from '@arco-design/web-vue';
 import MainMission from './json/MainMission.json';
@@ -68,46 +68,35 @@ const mainMissionOptions = ref([]);
 const subMissionOptions = ref([]);
 
 onMounted(async () => {
-  
   setTimeout(() => {
     showNotice.value = true;
   }, 1000);
 
-  
-  const address = localStorage.getItem('address');
-  const adminpass = localStorage.getItem('adminpass');
   const uid = localStorage.getItem('uid');
+  const apiAddress = import.meta.env.VITE_DHWT_API_SERVER + '/api/player';
 
-  if (!address || !adminpass || !uid) {
-    Message.info('页面正在建设中，敬请期待Ψ(￣∀￣)Ψ');
+  if (!uid) {
+    Message.info('用户未登录，请重试');
     return;
   }
 
-  
   try {
-    const response = await axios.post(address, new URLSearchParams({
-      command: 'mission running',
-      adminpass,
-      uid
-    }), {
+    const response = await axios.post(apiAddress, { uid }, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       }
     });
 
     const responseData = response.data;
-    if (responseData.retcode !== 0) {
+    if (responseData.code !== 0) {
       Message.error('获取任务信息失败');
       return;
     }
 
-    const missionInfo = responseData.data.missioninfo;
-
-    
+    const missionInfo = responseData.data.acceptedMissionList;
     const categorizedMissions = {};
 
-    missionInfo.forEach(mission => {
-      const mainMissionId = mission.mainMission.toString();
+    Object.entries(missionInfo).forEach(([mainMissionId, subMissions]) => {
       const typename = MainMission[mainMissionId]?.typename || '未知类型';
 
       if (!categorizedMissions[typename]) {
@@ -117,24 +106,21 @@ onMounted(async () => {
       categorizedMissions[typename].push({
         value: mainMissionId,
         label: MainMission[mainMissionId]?.text || '未知任务',
-        children: mission.subMissions.map(subMission => ({
-          value: subMission.toString(),
-          label: SubMission[subMission.toString()] || '未知子任务'
+        children: subMissions.map(subMissionId => ({
+          value: subMissionId.toString(),
+          label: SubMission[subMissionId.toString()] || '未知子任务'
         }))
       });
     });
 
-    
     typeOptions.value = Object.keys(categorizedMissions);
 
-    
     watch(selectedType, (newType) => {
       mainMissionOptions.value = categorizedMissions[newType] || [];
       selectedMainMission.value = null;
       selectedSubMission.value = null;
     });
 
-    
     watch(selectedMainMission, (newMainMission) => {
       const selectedMission = mainMissionOptions.value.find(mission => mission.value === newMainMission);
       subMissionOptions.value = selectedMission ? selectedMission.children : [];
@@ -146,81 +132,42 @@ onMounted(async () => {
   }
 });
 
-
-const completeMainMission = async () => {
-  const address = localStorage.getItem('address');
-  const adminpass = localStorage.getItem('adminpass');
+const submitCommand = async (type) => {
   const uid = localStorage.getItem('uid');
+  const apiAddress = import.meta.env.VITE_DHWT_API_SERVER + '/api/submit';
 
-  if (!address || !adminpass || !uid) {
+  if (!uid) {
     Message.info('用户未登录，请重试');
     return;
   }
 
-  if (!selectedMainMission.value) {
-    Message.info('请选择一个主任务');
-    return;
-  }
-
-  console.log('Selected Main Mission ID:', selectedMainMission.value);
-
-  try {
-    const response = await axios.post(address, new URLSearchParams({
-      command: `mission finish ${selectedMainMission.value}`,
-      adminpass,
-      uid
-    }), {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
-
-    const responseData = response.data;
-    if (responseData.retcode === 0) {
-      Message.success('主任务完成成功');
-    } else {
-      Message.error('主任务完成失败');
+  let command = '';
+  if (type === 'main') {
+    if (!selectedMainMission.value) {
+      Message.info('请选择一个主任务');
+      return;
     }
-  } catch (error) {
-    Message.error('请求失败');
-    console.error(error);
+    command = `mission finish ${selectedMainMission.value}`;
+  } else if (type === 'sub') {
+    if (!selectedSubMission.value) {
+      Message.info('请选择一个子任务');
+      return;
+    }
+    command = `mission finish ${selectedSubMission.value}`;
   }
-};
-
-
-const completeSubMission = async () => {
-  const address = localStorage.getItem('address');
-  const adminpass = localStorage.getItem('adminpass');
-  const uid = localStorage.getItem('uid');
-
-  if (!address || !adminpass || !uid) {
-    Message.info('用户未登录，请重试');
-    return;
-  }
-
-  if (!selectedSubMission.value) {
-    Message.info('请选择一个子任务');
-    return;
-  }
-
-  console.log('Selected Sub Mission ID:', selectedSubMission.value);
 
   try {
-    const response = await axios.post(address, new URLSearchParams({
-      command: `mission finish ${selectedSubMission.value}`,
-      adminpass,
-      uid
-    }), {
+    const response = await axios.post(apiAddress, { command, uid }, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
       }
     });
 
     const responseData = response.data;
-    if (responseData.retcode === 0) {
-      Message.success('子任务完成成功');
+    if (responseData.code === 0) {
+      Message.success(`${type === 'main' ? '主任务' : '子任务'}完成成功`);
     } else {
-      Message.error('子任务完成失败');
+      Message.error(`${type === 'main' ? '主任务' : '子任务'}完成失败`);
     }
   } catch (error) {
     Message.error('请求失败');
@@ -228,8 +175,8 @@ const completeSubMission = async () => {
   }
 };
 </script>
-<style lang="less" scoped>
 
+<style lang="less" scoped>
 .scrolling-notice {
   color: #BEBEBE;
   padding: 8px;
@@ -261,7 +208,6 @@ const completeSubMission = async () => {
     }
   }
 }
-
 
 .select-container {
   width: 100%;
@@ -302,4 +248,3 @@ const completeSubMission = async () => {
   }
 }
 </style>
-

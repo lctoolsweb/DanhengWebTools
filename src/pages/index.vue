@@ -90,18 +90,17 @@ onMounted(() => {
 const toggleLanguage = () => {
   locale.value = isChinese.value ? 'en' : 'zh'; // 切换语言
   isChinese.value = !isChinese.value; // 切换按钮文字
-  updateTranslatedText(); // 更新翻译文本
+  updateTranslatedText(); 
 };
 
-// 更新翻译文本
 const updateTranslatedText = () => {
   translatedText.title = t('ct.title');
   translatedText.introduce = t('ct.introduce');
   translatedText.start = t('ct.start');
 };
 
-// 获取最新版本号
-const currentVersion = '0.0.1'; 
+
+const currentVersion = '1.0.0'; //为了及时获取最新版本，请勿修改此版本号！
 const latestVersion = ref('');  
 
 const fetchLatestVersion = async () => {
