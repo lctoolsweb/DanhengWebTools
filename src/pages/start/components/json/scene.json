@@ -148,7 +148,15 @@
     "value": 20241  
   }, 
   { 
-    "label": "[Maze] 「白日梦」酒店-梦境", 
+    "label": "[Maze] 竞锋舰",
+    "value": 20242
+  },
+  {
+    "label": "[Maze] 心兽的战场",
+    "value": 20243
+  },
+  {
+    "label": "[Maze] 「白日梦」酒店-梦境",
     "value": 20311  
   }, 
   { 
@@ -224,7 +232,11 @@
     "value": 30125  
   }, 
   { 
-    "label": "[Raid] 侵蚀隧洞", 
+    "label": "[Challenge] ",
+    "value": 30126
+  },
+  {
+    "label": "[Raid] 侵蚀隧洞",
     "value": 30201  
   }, 
   { 
@@ -260,7 +272,11 @@
     "value": 30524  
   }, 
   { 
-    "label": "[Raid] ", 
+    "label": "[TrialActivity] ",
+    "value": 30525
+  },
+  {
+    "label": "[Raid] ",
     "value": 40000  
   }, 
   { 
@@ -276,7 +292,31 @@
     "value": 40101  
   }, 
   { 
-    "label": "[Raid] ", 
+    "label": "[Raid] ",
+    "value": 40102
+  },
+  {
+    "label": "[Raid] ",
+    "value": 40103
+  },
+  {
+    "label": "[Raid] ",
+    "value": 40104
+  },
+  {
+    "label": "[Raid] ",
+    "value": 40105
+  },
+  {
+    "label": "[Raid] ",
+    "value": 40106
+  },
+  {
+    "label": "[Raid] ",
+    "value": 40107
+  },
+  {
+    "label": "[Raid] ",
     "value": 40111  
   }, 
   { 
@@ -344,7 +384,15 @@
     "value": 40238  
   }, 
   { 
-    "label": "[Raid] ", 
+    "label": "[Raid] ",
+    "value": 40242
+  },
+  {
+    "label": "[Raid] ",
+    "value": 40243
+  },
+  {
+    "label": "[Raid] ",
     "value": 40312  
   }, 
   { 
@@ -692,7 +740,11 @@
     "value": 80408  
   }, 
   { 
-    "label": "[Rogue] 模拟宇宙", 
+    "label": "[Rogue] 差分宇宙",
+    "value": 80409
+  },
+  {
+    "label": "[Rogue] 模拟宇宙",
     "value": 81001  
   }, 
   { 
