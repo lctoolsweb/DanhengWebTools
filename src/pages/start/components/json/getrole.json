@@ -172,6 +172,10 @@
     "value": 1224
   },
   {
+    "label": "忘归人",
+    "value": 1225
+  },
+  {
     "label": "加拉赫",
     "value": 1301
   },
@@ -216,12 +220,20 @@
     "value": 1312
   },
   {
+    "label": "星期日",
+    "value": 1313
+  },
+  {
     "label": "翡翠",
     "value": 1314
   },
   {
     "label": "波提欧",
     "value": 1315
+  },
+  {
+    "label": "乱破",
+    "value": 1317
   },
   {
     "label": "{NICKNAME}",
