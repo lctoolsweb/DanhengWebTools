@@ -236,6 +236,14 @@
     "value": 1317
   },
   {
+    "label": "大黑塔",
+    "value": 1401
+  },
+  {
+    "label": "阿格莱雅",
+    "value": 1402
+  },
+  {
     "label": "{NICKNAME}",
     "value": 8001
   },
@@ -258,5 +266,49 @@
   {
     "label": "{NICKNAME}",
     "value": 8006
+  },
+  {
+    "label": "{NICKNAME}",
+    "value": 8007
+  },
+  {
+    "label": "{NICKNAME}",
+    "value": 8008
+  },
+  {
+    "label": "刃",
+    "value": 7205
+  },
+  {
+    "label": "镜流",
+    "value": 7212
+  },
+  {
+    "label": "丹恒•饮月",
+    "value": 7213
+  },
+  {
+    "label": "卡芙卡",
+    "value": 7005
+  },
+  {
+    "label": "银狼",
+    "value": 7006
+  },
+  {
+    "label": "斯科特安排的公司机甲",
+    "value": 6023
+  },
+  {
+    "label": "{NICKNAME}",
+    "value": 8901
+  },
+  {
+    "label": "{NICKNAME}",
+    "value": 8902
+  },
+  {
+    "label": "三月七",
+    "value": 6022
   }
 ]
