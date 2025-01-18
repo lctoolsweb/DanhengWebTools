@@ -1,250 +1,298 @@
 [
   {
-    "label": "三月七",
-    "value": 1001
+    "value": 1001,
+    "label": "三月七"
   },
   {
-    "label": "丹恒",
-    "value": 1002
+    "value": 1002,
+    "label": "丹恒"
   },
   {
-    "label": "姬子",
-    "value": 1003
+    "value": 1003,
+    "label": "姬子"
   },
   {
-    "label": "瓦尔特",
-    "value": 1004
+    "value": 1004,
+    "label": "瓦尔特"
   },
   {
-    "label": "卡芙卡",
-    "value": 1005
+    "value": 1005,
+    "label": "卡芙卡"
   },
   {
-    "label": "银狼",
-    "value": 1006
+    "value": 1006,
+    "label": "银狼"
   },
   {
-    "label": "阿兰",
-    "value": 1008
+    "value": 1008,
+    "label": "阿兰"
   },
   {
-    "label": "艾丝妲",
-    "value": 1009
+    "value": 1009,
+    "label": "艾丝妲"
   },
   {
-    "label": "黑塔",
-    "value": 1013
+    "value": 1013,
+    "label": "黑塔"
   },
   {
-    "label": "布洛妮娅",
-    "value": 1101
+    "value": 1101,
+    "label": "布洛妮娅"
   },
   {
-    "label": "希儿",
-    "value": 1102
+    "value": 1102,
+    "label": "希儿"
   },
   {
-    "label": "希露瓦",
-    "value": 1103
+    "value": 1103,
+    "label": "希露瓦"
   },
   {
-    "label": "杰帕德",
-    "value": 1104
+    "value": 1104,
+    "label": "杰帕德"
   },
   {
-    "label": "娜塔莎",
-    "value": 1105
+    "value": 1105,
+    "label": "娜塔莎"
   },
   {
-    "label": "佩拉",
-    "value": 1106
+    "value": 1106,
+    "label": "佩拉"
   },
   {
-    "label": "克拉拉",
-    "value": 1107
+    "value": 1107,
+    "label": "克拉拉"
   },
   {
-    "label": "桑博",
-    "value": 1108
+    "value": 1108,
+    "label": "桑博"
   },
   {
-    "label": "虎克",
-    "value": 1109
+    "value": 1109,
+    "label": "虎克"
   },
   {
-    "label": "玲可",
-    "value": 1110
+    "value": 1110,
+    "label": "玲可"
   },
   {
-    "label": "卢卡",
-    "value": 1111
+    "value": 1111,
+    "label": "卢卡"
   },
   {
-    "label": "托帕&账账",
-    "value": 1112
+    "value": 1112,
+    "label": "托帕\u0026账账"
   },
   {
-    "label": "青雀",
-    "value": 1201
+    "value": 1201,
+    "label": "青雀"
   },
   {
-    "label": "停云",
-    "value": 1202
+    "value": 1202,
+    "label": "停云"
   },
   {
-    "label": "罗刹",
-    "value": 1203
+    "value": 1203,
+    "label": "罗刹"
   },
   {
-    "label": "景元",
-    "value": 1204
+    "value": 1204,
+    "label": "景元"
   },
   {
-    "label": "刃",
-    "value": 1205
+    "value": 1205,
+    "label": "刃"
   },
   {
-    "label": "素裳",
-    "value": 1206
+    "value": 1206,
+    "label": "素裳"
   },
   {
-    "label": "驭空",
-    "value": 1207
+    "value": 1207,
+    "label": "驭空"
   },
   {
-    "label": "符玄",
-    "value": 1208
+    "value": 1208,
+    "label": "符玄"
   },
   {
-    "label": "彦卿",
-    "value": 1209
+    "value": 1209,
+    "label": "彦卿"
   },
   {
-    "label": "桂乃芬",
-    "value": 1210
+    "value": 1210,
+    "label": "桂乃芬"
   },
   {
-    "label": "白露",
-    "value": 1211
+    "value": 1211,
+    "label": "白露"
   },
   {
-    "label": "镜流",
-    "value": 1212
+    "value": 1212,
+    "label": "镜流"
   },
   {
-    "label": "丹恒•饮月",
-    "value": 1213
+    "value": 1213,
+    "label": "丹恒•饮月"
   },
   {
-    "label": "雪衣",
-    "value": 1214
+    "value": 1214,
+    "label": "雪衣"
   },
   {
-    "label": "寒鸦",
-    "value": 1215
+    "value": 1215,
+    "label": "寒鸦"
   },
   {
-    "label": "藿藿",
-    "value": 1217
+    "value": 1217,
+    "label": "藿藿"
   },
   {
-    "label": "椒丘",
-    "value": 1218
+    "value": 1218,
+    "label": "椒丘"
   },
   {
-    "label": "飞霄",
-    "value": 1220
+    "value": 1220,
+    "label": "飞霄"
   },
   {
-    "label": "云璃",
-    "value": 1221
+    "value": 1221,
+    "label": "云璃"
   },
   {
-    "label": "灵砂",
-    "value": 1222
+    "value": 1222,
+    "label": "灵砂"
   },
   {
-    "label": "貊泽",
-    "value": 1223
+    "value": 1223,
+    "label": "貊泽"
   },
   {
-    "label": "三月七•巡猎",
-    "value": 1224
+    "value": 1224,
+    "label": "三月七"
   },
   {
-    "label": "加拉赫",
-    "value": 1301
+    "value": 1225,
+    "label": "忘归人"
   },
   {
-    "label": "银枝",
-    "value": 1302
+    "value": 1301,
+    "label": "加拉赫"
   },
   {
-    "label": "阮•梅",
-    "value": 1303
+    "value": 1302,
+    "label": "银枝"
   },
   {
-    "label": "砂金",
-    "value": 1304
+    "value": 1303,
+    "label": "阮•梅"
   },
   {
-    "label": "真理医生",
-    "value": 1305
+    "value": 1304,
+    "label": "砂金"
   },
   {
-    "label": "花火",
-    "value": 1306
+    "value": 1305,
+    "label": "真理医生"
   },
   {
-    "label": "黑天鹅",
-    "value": 1307
+    "value": 1306,
+    "label": "花火"
   },
   {
-    "label": "黄泉",
-    "value": 1308
+    "value": 1307,
+    "label": "黑天鹅"
   },
   {
-    "label": "知更鸟",
-    "value": 1309
+    "value": 1308,
+    "label": "黄泉"
   },
   {
-    "label": "流萤",
-    "value": 1310
+    "value": 1309,
+    "label": "知更鸟"
   },
   {
-    "label": "米沙",
-    "value": 1312
+    "value": 1310,
+    "label": "流萤"
   },
   {
-    "label": "翡翠",
-    "value": 1314
+    "value": 1312,
+    "label": "米沙"
   },
   {
-    "label": "波提欧",
-    "value": 1315
+    "value": 1313,
+    "label": "星期日"
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8001
+    "value": 1314,
+    "label": "翡翠"
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8002
+    "value": 1315,
+    "label": "波提欧"
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8003
+    "value": 1317,
+    "label": "乱破"
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8004
+    "value": 8001,
+    "label": "{NICKNAME}"
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8005
+    "value": 8002,
+    "label": "{NICKNAME}"
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8006
+    "value": 8003,
+    "label": "{NICKNAME}"
+  },
+  {
+    "value": 8004,
+    "label": "{NICKNAME}"
+  },
+  {
+    "value": 8005,
+    "label": "{NICKNAME}"
+  },
+  {
+    "value": 8006,
+    "label": "{NICKNAME}"
+  },
+  {
+    "value": 7205,
+    "label": "刃"
+  },
+  {
+    "value": 7212,
+    "label": "镜流"
+  },
+  {
+    "value": 7213,
+    "label": "丹恒•饮月"
+  },
+  {
+    "value": 7005,
+    "label": "卡芙卡"
+  },
+  {
+    "value": 7006,
+    "label": "银狼"
+  },
+  {
+    "value": 6023,
+    "label": "斯科特安排的公司机甲"
+  },
+  {
+    "value": 8901,
+    "label": "{NICKNAME}"
+  },
+  {
+    "value": 8902,
+    "label": "{NICKNAME}"
+  },
+  {
+    "value": 6022,
+    "label": "三月七"
   }
-] 
+]
