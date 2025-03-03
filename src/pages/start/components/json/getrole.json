@@ -80,10 +80,6 @@
     "value": 1111
   },
   {
-    "label": "托帕&账账",
-    "value": 1112
-  },
-  {
     "label": "青雀",
     "value": 1201
   },
@@ -144,106 +140,6 @@
     "value": 1215
   },
   {
-    "label": "藿藿",
-    "value": 1217
-  },
-  {
-    "label": "椒丘",
-    "value": 1218
-  },
-  {
-    "label": "飞霄",
-    "value": 1220
-  },
-  {
-    "label": "云璃",
-    "value": 1221
-  },
-  {
-    "label": "灵砂",
-    "value": 1222
-  },
-  {
-    "label": "貊泽",
-    "value": 1223
-  },
-  {
-    "label": "三月七",
-    "value": 1224
-  },
-  {
-    "label": "忘归人",
-    "value": 1225
-  },
-  {
-    "label": "加拉赫",
-    "value": 1301
-  },
-  {
-    "label": "银枝",
-    "value": 1302
-  },
-  {
-    "label": "阮•梅",
-    "value": 1303
-  },
-  {
-    "label": "砂金",
-    "value": 1304
-  },
-  {
-    "label": "真理医生",
-    "value": 1305
-  },
-  {
-    "label": "花火",
-    "value": 1306
-  },
-  {
-    "label": "黑天鹅",
-    "value": 1307
-  },
-  {
-    "label": "黄泉",
-    "value": 1308
-  },
-  {
-    "label": "知更鸟",
-    "value": 1309
-  },
-  {
-    "label": "流萤",
-    "value": 1310
-  },
-  {
-    "label": "米沙",
-    "value": 1312
-  },
-  {
-    "label": "星期日",
-    "value": 1313
-  },
-  {
-    "label": "翡翠",
-    "value": 1314
-  },
-  {
-    "label": "波提欧",
-    "value": 1315
-  },
-  {
-    "label": "乱破",
-    "value": 1317
-  },
-  {
-    "label": "大黑塔",
-    "value": 1401
-  },
-  {
-    "label": "阿格莱雅",
-    "value": 1402
-  },
-  {
     "label": "{NICKNAME}",
     "value": 8001
   },
@@ -260,32 +156,8 @@
     "value": 8004
   },
   {
-    "label": "{NICKNAME}",
-    "value": 8005
-  },
-  {
-    "label": "{NICKNAME}",
-    "value": 8006
-  },
-  {
-    "label": "{NICKNAME}",
-    "value": 8007
-  },
-  {
-    "label": "{NICKNAME}",
-    "value": 8008
-  },
-  {
-    "label": "刃",
-    "value": 7205
-  },
-  {
-    "label": "镜流",
-    "value": 7212
-  },
-  {
-    "label": "丹恒•饮月",
-    "value": 7213
+    "label": "银枝",
+    "value": 1302
   },
   {
     "label": "卡芙卡",
@@ -296,19 +168,127 @@
     "value": 7006
   },
   {
-    "label": "斯科特安排的公司机甲",
-    "value": 6023
+    "label": "丹恒•饮月",
+    "value": 7213
+  },
+  {
+    "label": "刃",
+    "value": 7205
+  },
+  {
+    "label": "镜流",
+    "value": 7212
+  },
+  {
+    "label": "阮•梅",
+    "value": 1303
+  },
+  {
+    "label": "托帕\u0026账账",
+    "value": 1112
+  },
+  {
+    "label": "藿藿",
+    "value": 1217
+  },
+  {
+    "label": "砂金",
+    "value": 1304
+  },
+  {
+    "label": "米沙",
+    "value": 1312
+  },
+  {
+    "label": "流萤",
+    "value": 1310
+  },
+  {
+    "label": "加拉赫",
+    "value": 1301
+  },
+  {
+    "label": "黑天鹅",
+    "value": 1307
+  },
+  {
+    "label": "黄泉",
+    "value": 1308
+  },
+  {
+    "label": "真理医生",
+    "value": 1305
+  },
+  {
+    "label": "波提欧",
+    "value": 1315
   },
   {
     "label": "{NICKNAME}",
-    "value": 8901
+    "value": 8005
+  },
+  {
+    "label": "知更鸟",
+    "value": 1309
   },
   {
     "label": "{NICKNAME}",
-    "value": 8902
+    "value": 8006
+  },
+  {
+    "label": "翡翠",
+    "value": 1314
+  },
+  {
+    "label": "花火",
+    "value": 1306
+  },
+  {
+    "label": "椒丘",
+    "value": 1218
   },
   {
     "label": "三月七",
-    "value": 6022
+    "value": 1224
+  },
+  {
+    "label": "星期日",
+    "value": 1313
+  },
+  {
+    "label": "云璃",
+    "value": 1221
+  },
+  {
+    "label": "飞霄",
+    "value": 1220
+  },
+  {
+    "label": "乱破",
+    "value": 1317
+  },
+  {
+    "label": "貊泽",
+    "value": 1223
+  },
+  {
+    "label": "灵砂",
+    "value": 1222
+  },
+  {
+    "label": "忘归人",
+    "value": 1225
+  },
+  {
+    "label": "阿格莱雅",
+    "value": 1402
+  },
+  {
+    "label": "大黑塔",
+    "value": 1401
+  },
+  {
+    "label": "缇宝",
+    "value": 1403
   }
 ]
